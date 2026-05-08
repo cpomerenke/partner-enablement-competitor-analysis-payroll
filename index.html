@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EH Payroll Battlecards 2026 — Intuit Partner Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ─────────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────────── */
+:root {
+  --purple:       #7622d7;
+  --purple-deep:  #2d0649;
+  --purple-dark:  #460078;
+  --purple-hero:  #5a0fa8;
+  --purple-light: #a569ff;
+  --lime:         #bafc58;
+  --amber:        #ffa000;
+  --sky:          #40d1ff;
+  --near-black:   #121214;
+  --card-bg:      #1a1a1e;
+  --card-bg-2:    #222228;
+  --white:        #ffffff;
+  --text-muted:   rgba(255,255,255,0.55);
+  --text-dim:     rgba(255,255,255,0.35);
+  --border:       rgba(255,255,255,0.08);
+  --border-purple: rgba(165,105,255,0.2);
+  --nav-width:    0px;
+  --top-h:        48px;
+  --transition:   0.18s cubic-bezier(.4,0,.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--near-black);
+  color: var(--white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─────────────────────────────────────────────
+   TOP BAR
+───────────────────────────────────────────── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: var(--top-h);
+  background: var(--purple-deep);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center;
+  padding: 0 1.5rem;
+  gap: 1rem;
+}
+.topbar-logo {
+  display: flex; align-items: center; gap: 8px;
+  text-decoration: none;
+}
+.topbar-logo-mark {
+  display: flex; align-items: center;
+}
+.topbar-wordmark {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: -0.01em;
+}
+.topbar-badge {
+  margin-left: auto;
+  font-family: 'Lexend', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--lime);
+  border: 1.5px solid rgba(186,252,88,0.45);
+  padding: 4px 14px; border-radius: 3px;
+}
+
+/* ─────────────────────────────────────────────
+   LAYOUT: SIDEBAR + CONTENT
+───────────────────────────────────────────── */
+.layout {
+  display: flex;
+  padding-top: var(--top-h);
+  min-height: 100vh;
+}
+
+
+/* ─────────────────────────────────────────────
+   MAIN CONTENT
+───────────────────────────────────────────── */
+.content {
+  margin-left: var(--nav-width);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─────────────────────────────────────────────
+   HERO SECTION  (purple like the screenshot)
+───────────────────────────────────────────── */
+.hero {
+  background: var(--purple-dark);
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 3rem 3rem;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 90% 0%, rgba(165,105,255,0.35) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 80% at 0% 100%, rgba(45,6,73,0.7) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-noise {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.hero-inner { position: relative; max-width: 900px; }
+
+.hero-eyebrow {
+  font-family: 'Lexend', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 1.1rem;
+}
+.hero-h1 {
+  font-family: 'Lexend', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 1.25rem;
+}
+.hero-h1 .accent {
+  color: var(--lime);
+  font-style: italic;
+}
+.hero-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+  max-width: 540px;
+  margin-bottom: 2rem;
+}
+.hero-meta {
+  display: flex; gap: 2rem; flex-wrap: wrap;
+}
+.hero-stat {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.hero-stat-num {
+  font-family: 'Lexend', sans-serif;
+  font-size: 28px; font-weight: 800;
+  color: var(--lime); line-height: 1;
+  letter-spacing: -0.02em;
+}
+.hero-stat-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.hero-right {
+  position: absolute; top: 2.5rem; right: 2.5rem;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.75rem;
+}
+.confidential-tag {
+  font-family: 'Lexend', sans-serif;
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(186,252,88,0.75);
+  background: rgba(186,252,88,0.08);
+  border: 1px solid rgba(186,252,88,0.2);
+  border-radius: 20px; padding: 4px 12px;
+}
+
+/* ─────────────────────────────────────────────
+   CONTROLS STRIP
+───────────────────────────────────────────── */
+.controls-strip {
+  background: #0e0014;
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 2.5rem;
+  display: flex; align-items: center; gap: 1rem;
+  flex-wrap: wrap;
+  position: sticky; top: var(--top-h); z-index: 90;
+  backdrop-filter: blur(12px);
+}
+.tab-row { display: flex; gap: 2px; background: rgba(255,255,255,0.04); border-radius: 9px; padding: 3px; }
+.tab-btn {
+  font-family: 'Lexend', sans-serif;
+  font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.45);
+  background: none; border: none; cursor: pointer;
+  border-radius: 7px; padding: 6px 14px;
+  display: flex; align-items: center; gap: 7px;
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+.tab-btn:hover { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.06); }
+.tab-btn.active { background: var(--purple); color: #fff; }
+.tab-count {
+  font-size: 9.5px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px; padding: 1px 6px; min-width: 18px; text-align: center;
+}
+.search-wrap { position: relative; flex: 1; min-width: 180px; max-width: 320px; }
+.search-icon { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.3); pointer-events: none; }
+.search-input {
+  width: 100%;
+  font-family: 'DM Sans', sans-serif; font-size: 13px;
+  color: var(--white);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 9px;
+  padding: 7px 12px 7px 34px;
+  outline: none;
+  transition: border-color var(--transition);
+}
+.search-input::placeholder { color: rgba(255,255,255,0.28); }
+.search-input:focus { border-color: var(--purple-light); background: rgba(165,105,255,0.07); }
+.result-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; color: rgba(255,255,255,0.3);
+  margin-left: auto; white-space: nowrap;
+}
+.result-label strong { color: rgba(255,255,255,0.55); }
+
+/* ─────────────────────────────────────────────
+   LEGEND
+───────────────────────────────────────────── */
+.legend {
+  padding: 0.6rem 2.5rem;
+  display: flex; gap: 1.5rem; align-items: center;
+  background: var(--near-black);
+  border-bottom: 1px solid var(--border);
+}
+.legend-item {
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px; color: rgba(255,255,255,0.4);
+}
+.legend-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+/* ─────────────────────────────────────────────
+   CARDS AREA
+───────────────────────────────────────────── */
+.cards-area { padding: 2rem 2.5rem 4rem; background: var(--near-black); flex: 1; }
+
+.region-block { margin-bottom: 2.75rem; }
+.region-label {
+  font-family: 'Lexend', sans-serif;
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.region-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────
+   CARD
+───────────────────────────────────────────── */
+.card {
+  background: var(--card-bg);
+  display: flex; flex-direction: column;
+  position: relative;
+  transition: background var(--transition);
+}
+.card:hover { background: var(--card-bg-2); }
+.card.hidden { display: none; }
+
+.card-top {
+  padding: 1.1rem 1.25rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 11px;
+}
+.avatar {
+  width: 44px; height: 44px; border-radius: 9px;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+}
+.avatar .logo-img { width: 34px; height: 34px; object-fit: contain; display: block; }
+.avatar .logo-fallback {
+  display: none; width: 100%; height: 100%;
+  align-items: center; justify-content: center;
+  font-family: 'Lexend', sans-serif;
+  font-size: 11px; font-weight: 800; letter-spacing: -0.5px;
+}
+.avatar.no-logo { background: var(--card-bg-2); }
+.avatar.no-logo .logo-img { display: none; }
+.avatar.no-logo .logo-fallback { display: flex; }
+.avatar-anz.no-logo  { background: rgba(64,209,255,0.1);  color: var(--sky); }
+.avatar-sea.no-logo  { background: rgba(255,160,0,0.1);   color: var(--amber); }
+.avatar-glob.no-logo { background: rgba(186,252,88,0.1);  color: #8ed630; }
+
+.card-name {
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px; font-weight: 700;
+  color: var(--white); line-height: 1.3;
+}
+.card-tags { display: flex; gap: 5px; margin-top: 3px; }
+.region-tag {
+  font-family: 'Lexend', sans-serif;
+  font-size: 8.5px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 20px;
+}
+.tag-anz  { background: rgba(64,209,255,0.1);   color: var(--sky); }
+.tag-sea  { background: rgba(255,160,0,0.1);    color: var(--amber); }
+.tag-glob { background: rgba(186,252,88,0.1);   color: #9fe030; }
+
+.card-body { padding: 0.9rem 1.25rem; flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
+
+.section {
+  border-radius: 7px;
+  padding: 0.8rem 0.9rem;
+  border-left: 3px solid;
+}
+.section-win   { background: rgba(186,252,88,0.05);  border-color: var(--lime); }
+.section-watch { background: rgba(255,160,0,0.05);   border-color: var(--amber); }
+
+.section-label {
+  font-family: 'Lexend', sans-serif;
+  font-size: 8.5px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 7px;
+  display: flex; align-items: center; gap: 5px;
+}
+.section-win   .section-label { color: var(--lime); }
+.section-watch .section-label { color: var(--amber); }
+
+.points { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.points li {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; line-height: 1.55;
+  color: rgba(255,255,255,0.65);
+  display: flex; gap: 8px; align-items: flex-start;
+}
+.point-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+.section-win   .point-dot { background: var(--lime); }
+.section-watch .point-dot { background: var(--amber); }
+
+.card-foot {
+  padding: 0.65rem 1.25rem;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+}
+.copy-btn {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px; font-weight: 600;
+  color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px; padding: 5px 11px;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.copy-btn:hover { background: rgba(165,105,255,0.12); color: var(--purple-light); border-color: rgba(165,105,255,0.25); }
+.copy-btn.copied { color: var(--lime); background: rgba(186,252,88,0.08); border-color: rgba(186,252,88,0.22); }
+.strength-meter { display: flex; gap: 4px; }
+.meter-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  transition: background var(--transition);
+}
+.meter-dot.win { background: var(--lime); }
+
+/* ─────────────────────────────────────────────
+   EMPTY
+───────────────────────────────────────────── */
+.empty-state {
+  grid-column: 1/-1; padding: 4rem 2rem; text-align: center;
+  font-family: 'DM Sans', sans-serif; font-size: 14px;
+  color: rgba(255,255,255,0.25);
+}
+.empty-state svg { opacity: 0.25; margin-bottom: 1rem; }
+
+/* ─────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────── */
+.site-footer {
+  background: #0a000f;
+  border-top: 1px solid var(--border);
+  margin-left: var(--nav-width);
+  padding: 1.1rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
+}
+.footer-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px; color: rgba(255,255,255,0.25);
+}
+.footer-brand {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px; font-weight: 600;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ─────────────────────────────────────────────
+   TOAST
+───────────────────────────────────────────── */
+.toast {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999;
+  font-family: 'Lexend', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.02em;
+  color: #121214; background: var(--lime);
+  border-radius: 8px; padding: 10px 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  opacity: 0; transform: translateY(8px); pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.toast.visible { opacity: 1; transform: translateY(0); }
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+@media (max-width: 860px) {
+  :root { --nav-width: 0px; }
+  .sidebar { display: none; }
+  .site-footer { margin-left: 0; }
+  .hero, .controls-strip, .legend, .cards-area { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .hero { padding-top: 2rem; }
+  .hero-right { position: static; flex-direction: row; flex-wrap: wrap; margin-top: 1.5rem; }
+  .cards-grid { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── TOP BAR ── -->
+<header class="topbar">
+  <a class="topbar-logo" href="#">
+    <svg height="22" viewBox="25 218 450 64" xmlns="http://www.w3.org/2000/svg">
+      <defs><style>.cls-1{fill:#fff;stroke-width:0px;}</style></defs>
+      <path class="cls-1" d="M108.11,259.66c3.71,0,6.15-1.79,7.42-3.79.16-.25.51-.28.7-.06l3.03,3.34c.15.16.16.42.02.58-2.19,2.58-5.95,4.66-11.36,4.66-8.24,0-12.44-5.48-12.44-12.58s4.72-12.68,12.4-12.68,11.33,4.8,11.28,13.64c0,.24-.2.44-.45.44h-16.96c-.28,0-.49.25-.44.53.67,3.91,3.35,5.93,6.8,5.93h0ZM101.94,249.36h10.94c.28,0,.48-.25.44-.52-.51-3.22-2.52-5-5.45-5-2.75,0-5.41,1.59-6.36,4.95-.08.28.13.57.43.57ZM155.17,250.53c0-4.4-1.73-6.5-5.15-6.5s-5.48,2.43-5.48,6.83v12.47c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-12.38c0-4.86-1.4-6.93-4.91-6.93-4.12,0-5.71,3.74-5.71,7.72v11.58c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-23.16c0-.25.2-.44.44-.44h4.32c.27,0,.48.24.44.51l-.49,3.31c-.07.49.59.72.83.29,1.49-2.69,3.89-4.71,7.69-4.71,3.06,0,5.96,1.43,7.42,4.79.15.34.62.35.8.03,1.51-2.72,3.97-4.82,7.69-4.82,4.91,0,8.65,3.41,8.65,10.67v13.54c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-12.8h0ZM180.05,264.38c-3.51,0-6.06-1.4-7.67-3.58-.25-.34-.8-.16-.8.27v11.38c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-32.28c0-.25.2-.44.44-.44h4.28c.27,0,.48.24.44.51l-.42,3.04c-.07.48.57.71.82.3,1.56-2.6,4.29-4.45,8.42-4.45,5.94,0,10.67,4.4,10.67,12.63s-4.72,12.63-10.67,12.63h0ZM171.58,251.8c0,5.38,2.81,7.86,6.69,7.86s6.6-2.43,6.6-7.86-2.67-7.91-6.6-7.91-6.69,2.48-6.69,7.91ZM194.64,229.38h4.63c.25,0,.44.2.44.44v33.5c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-33.5c0-.25.2-.44.44-.44ZM215.81,264.38c-6.92,0-12.77-4.45-12.77-12.63s5.85-12.63,12.77-12.63,12.77,4.54,12.77,12.63-5.8,12.63-12.77,12.63ZM208.89,251.75c0,5.34,3.23,7.86,6.92,7.86s6.93-2.53,6.93-7.86-3.23-7.81-6.93-7.81-6.92,2.57-6.92,7.81ZM232.74,273.36c-2.03,0-3.9-.6-5.17-1.57-.18-.14-.24-.38-.13-.57l2.04-3.74c.14-.27.51-.31.72-.09.8.83,1.82,1.3,3.01,1.3,1.68,0,3.04-1.36,4.12-4.82l.05-.05-9.75-23.48c-.12-.29.09-.62.41-.62h4.97c.19,0,.35.11.42.28l6.21,16.26c.15.38.69.38.83,0l6.12-16.25c.06-.17.23-.29.42-.29h4.78c.32,0,.53.32.41.62l-10.41,25.12c-2.43,5.89-5.14,7.91-9.03,7.91h0ZM287.17,250.53c0-4.4-1.73-6.5-5.15-6.5s-5.48,2.43-5.48,6.83v12.47c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-12.38c0-4.86-1.4-6.93-4.91-6.93-4.12,0-5.71,3.74-5.71,7.72v11.58c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-23.16c0-.25.2-.44.44-.44h4.33c.27,0,.48.24.44.51l-.49,3.31c-.07.49.59.72.83.29,1.49-2.69,3.89-4.71,7.69-4.71,3.06,0,5.96,1.43,7.42,4.79.15.34.62.35.8.03,1.51-2.72,3.97-4.82,7.69-4.82,4.91,0,8.65,3.41,8.65,10.67v13.54c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-12.8h0ZM308.3,259.66c3.71,0,6.15-1.79,7.42-3.79.16-.25.5-.28.7-.06l3.03,3.34c.15.16.16.42.01.58-2.19,2.58-5.95,4.66-11.36,4.66-8.24,0-12.44-5.48-12.44-12.58s4.73-12.68,12.4-12.68,11.33,4.8,11.28,13.64c0,.24-.2.44-.45.44h-16.96c-.28,0-.49.25-.44.53.67,3.91,3.35,5.93,6.8,5.93h0ZM302.13,249.36h10.94c.28,0,.48-.25.44-.52-.52-3.22-2.52-5-5.45-5-2.75,0-5.41,1.59-6.36,4.95-.08.28.13.57.43.57ZM340.16,250.77c0-4.96-1.87-6.79-5.57-6.79s-5.99,2.81-5.99,7.11v12.23c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-23.16c0-.25.2-.44.44-.44h4.32c.27,0,.48.24.44.51l-.51,3.54c-.07.48.58.71.82.29,1.63-2.86,4.25-4.95,8.14-4.95,5.05,0,8.98,3.32,8.98,11.04v13.17c0,.25-.2.44-.44.44h-4.68c-.25,0-.44-.2-.44-.44v-12.56h0ZM352.21,254.7l-.05-9.94c0-.25-.2-.44-.44-.44h-3.93c-.25,0-.44-.2-.44-.44v-3.69c0-.25.2-.44.44-.44h3.93c.25,0,.44-.2.44-.44v-4.67c0-.16.09-.31.23-.39l5.34-3.01h.05v8.07c0,.25.2.44.44.44h8.05c.25,0,.44.2.44.44v3.69c0,.25-.2.44-.44.44h-8.05c-.25,0-.44.2-.44.44v9.47c0,3.88,1.21,5.34,3.55,5.34,1.87,0,3.38-.93,4.41-2.19.19-.23.54-.22.71.03l2.3,3.36c.12.18.1.42-.06.57-1.45,1.44-4.25,3.05-8.11,3.05-5.2,0-8.38-3.18-8.38-9.68h0ZM394.42,250.39c0-4.63-1.83-6.46-5.15-6.46-4.91,0-6.46,3.84-6.46,7.53v11.86c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-33.5c0-.25.2-.44.44-.44h4.63c.25,0,.44.2.44.44v13.04c0,.43.56.62.81.26,1.63-2.4,4.07-4.01,7.47-4.01,4.68,0,8.84,3.09,8.84,11.09l.05,13.12c0,.25-.2.45-.44.45h-4.67c-.25,0-.44-.2-.44-.44v-12.94h0ZM415.58,259.66c3.71,0,6.15-1.79,7.42-3.79.16-.25.51-.28.7-.06l3.03,3.34c.15.16.16.42.02.58-2.19,2.58-5.95,4.66-11.36,4.66-8.24,0-12.44-5.48-12.44-12.58s4.73-12.68,12.4-12.68,11.33,4.8,11.28,13.64c0,.24-.2.44-.45.44h-16.96c-.28,0-.49.25-.44.53.67,3.91,3.35,5.93,6.8,5.93h0ZM409.41,249.36h10.94c.28,0,.48-.25.44-.52-.52-3.22-2.52-5-5.45-5-2.75,0-5.41,1.59-6.36,4.95-.08.28.13.57.43.57ZM430.37,263.33v-23.16c0-.25.2-.44.44-.44h4.32c.27,0,.48.24.44.51l-.39,2.48c-.08.49.59.72.83.28,1.34-2.42,3.27-3.88,5.86-3.88,1.65,0,3.26.49,4.53,1.42.17.13.22.36.13.55l-2.1,4.4c-.13.27-.47.33-.7.14-.92-.8-2.07-1.22-3.31-1.22-2.67,0-4.54,2.24-4.54,8.42v10.5c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44h0ZM458.24,264.38c-6.92,0-12.77-4.45-12.77-12.63s5.85-12.63,12.77-12.63,12.77,4.54,12.77,12.63-5.8,12.63-12.77,12.63ZM451.32,251.75c0,5.34,3.23,7.86,6.92,7.86s6.93-2.53,6.93-7.86-3.23-7.81-6.93-7.81-6.92,2.57-6.92,7.81Z"/>
+      <path class="cls-1" d="M70.11,257.33c.8,0,1.55.44,1.95,1.15.38.68.37,1.49-.03,2.16l-.02.03c-2.79,4.44-7.28,7.67-12.34,8.88-1.38.33-2.35,1.58-2.35,3.05,0,1.69,1.36,3.07,3.04,3.07.24,0,.47-.03.71-.08,5.65-1.35,10.78-4.6,14.43-9.17,3.77-4.7,5.76-10.37,5.76-16.4s-1.99-11.7-5.76-16.4c-3.65-4.58-8.78-7.84-14.43-9.18-.23-.06-.47-.08-.71-.08-1.67,0-3.04,1.37-3.04,3.07,0,1.46.96,2.71,2.35,3.05,5.05,1.21,9.55,4.44,12.33,8.86l.03.06c.4.66.41,1.47.03,2.15-.4.71-1.15,1.15-1.95,1.15-.33,0-.64-.07-.95-.21-1.1-.52-2.29-.78-3.52-.78-4.4,0-8.04,3.44-8.29,7.83v.05c-.01.13-.02.23-.02.33v.2c0,.1,0,.21.02.33v.05c.25,4.39,3.9,7.84,8.29,7.84,1.23,0,2.42-.27,3.52-.78.3-.14.62-.21.95-.21"/>
+      <path class="cls-1" d="M49.88,224.36c-.24,0-.47.03-.71.08-5.65,1.34-10.78,4.6-14.43,9.17-3.77,4.71-5.76,10.37-5.76,16.4s1.99,11.7,5.76,16.4c3.66,4.57,8.78,7.83,14.43,9.17.24.06.47.08.71.08,1.67,0,3.04-1.37,3.04-3.07,0-1.46-.96-2.71-2.35-3.05-5.05-1.21-9.55-4.44-12.33-8.87l-.03-.05c-.41-.68-.42-1.48-.03-2.16.4-.71,1.15-1.15,1.95-1.15.33,0,.64.07.95.21,1.1.52,2.29.78,3.52.78,4.4,0,8.04-3.44,8.29-7.83v-.05c.01-.12.02-.22.02-.33v-.2c0-.1,0-.21-.02-.33v-.05c-.25-4.39-3.9-7.84-8.29-7.84-1.23,0-2.42.27-3.52.78-.3.14-.62.21-.95.21-.8,0-1.55-.44-1.95-1.15-.38-.68-.37-1.49.03-2.16v-.02l.02-.03c2.78-4.43,7.28-7.66,12.33-8.87,1.38-.33,2.35-1.58,2.35-3.05,0-1.69-1.36-3.07-3.04-3.07"/>
+    </svg>
+  </a>
+  <span class="topbar-badge">Partner Enablement Hub</span>
+</header>
+
+<!-- ── LAYOUT ── -->
+<div class="layout">
+
+
+  <!-- ── MAIN ── -->
+  <div class="content">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-noise"></div>
+      <div class="hero-right">
+        <span class="confidential-tag">Confidential</span>
+      </div>
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Payroll Battlecards 2026</div>
+
+        <h1 class="hero-h1">
+          Beat the<br>competition.<br><span class="accent">Win every deal.</span>
+        </h1>
+        <p class="hero-sub">
+          Know exactly why Employment Hero wins against every competitor — and how to handle any objection that comes your way.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTROLS -->
+    <div class="controls-strip">
+      <div class="tab-row" id="tabs">
+        <button class="tab-btn active" data-region="all">All <span class="tab-count" id="cnt-all">26</span></button>
+        <button class="tab-btn" data-region="anz">ANZ <span class="tab-count">12</span></button>
+        <button class="tab-btn" data-region="sea">SEA <span class="tab-count">8</span></button>
+        <button class="tab-btn" data-region="global">Global <span class="tab-count">6</span></button>
+      </div>
+      <div class="search-wrap">
+        <svg class="search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" class="search-input" id="search" placeholder="Search competitor…" autocomplete="off">
+      </div>
+      <span class="result-label">Showing <strong id="shown-count">26</strong> of 26</span>
+    </div>
+
+
+    <!-- CARDS -->
+    <div class="cards-area" id="cards-area">
+      <div class="region-block" id="section-anz">
+        <div class="region-label">ANZ Region — Australia &amp; New Zealand</div>
+        <div class="cards-grid" id="grid-anz"></div>
+      </div>
+      <div class="region-block" id="section-sea">
+        <div class="region-label">SEA Region — South-East Asia</div>
+        <div class="cards-grid" id="grid-sea"></div>
+      </div>
+      <div class="region-block" id="section-global">
+        <div class="region-label">Global Competitors</div>
+        <div class="cards-grid" id="grid-global"></div>
+      </div>
+      <div id="empty-state" class="empty-state" style="display:none;">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <p>No competitors match your search.</p>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /layout -->
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <span class="footer-text">Last updated May 2026 · For internal sales use only · Contact your regional enablement lead for updates</span>
+  <div class="footer-brand">
+    <svg height="14" viewBox="25 218 450 64" xmlns="http://www.w3.org/2000/svg" style="opacity:0.4">
+      <defs><style>.ft-cls{fill:#fff;stroke-width:0px;}</style></defs>
+      <path class="ft-cls" d="M108.11,259.66c3.71,0,6.15-1.79,7.42-3.79.16-.25.51-.28.7-.06l3.03,3.34c.15.16.16.42.02.58-2.19,2.58-5.95,4.66-11.36,4.66-8.24,0-12.44-5.48-12.44-12.58s4.72-12.68,12.4-12.68,11.33,4.8,11.28,13.64c0,.24-.2.44-.45.44h-16.96c-.28,0-.49.25-.44.53.67,3.91,3.35,5.93,6.8,5.93h0ZM101.94,249.36h10.94c.28,0,.48-.25.44-.52-.51-3.22-2.52-5-5.45-5-2.75,0-5.41,1.59-6.36,4.95-.08.28.13.57.43.57ZM180.05,264.38c-3.51,0-6.06-1.4-7.67-3.58-.25-.34-.8-.16-.8.27v11.38c0,.25-.2.44-.44.44h-4.63c-.25,0-.44-.2-.44-.44v-32.28c0-.25.2-.44.44-.44h4.28c.27,0,.48.24.44.51l-.42,3.04c-.07.48.57.71.82.3,1.56-2.6,4.29-4.45,8.42-4.45,5.94,0,10.67,4.4,10.67,12.63s-4.72,12.63-10.67,12.63h0ZM171.58,251.8c0,5.38,2.81,7.86,6.69,7.86s6.6-2.43,6.6-7.86-2.67-7.91-6.6-7.91-6.69,2.48-6.69,7.91ZM49.88,224.36c-.24,0-.47.03-.71.08-5.65,1.34-10.78,4.6-14.43,9.17-3.77,4.71-5.76,10.37-5.76,16.4s1.99,11.7,5.76,16.4c3.66,4.57,8.78,7.83,14.43,9.17.24.06.47.08.71.08,1.67,0,3.04-1.37,3.04-3.07,0-1.46-.96-2.71-2.35-3.05-5.05-1.21-9.55-4.44-12.33-8.87l-.03-.05c-.41-.68-.42-1.48-.03-2.16.4-.71,1.15-1.15,1.95-1.15.33,0,.64.07.95.21,1.1.52,2.29.78,3.52.78,4.4,0,8.04-3.44,8.29-7.83v-.05c.01-.12.02-.22.02-.33v-.2c0-.1,0-.21-.02-.33v-.05c-.25-4.39-3.9-7.84-8.29-7.84-1.23,0-2.42.27-3.52.78-.3.14-.62.21-.95.21-.8,0-1.55-.44-1.95-1.15-.38-.68-.37-1.49.03-2.16v-.02l.02-.03c2.78-4.43,7.28-7.66,12.33-8.87,1.38-.33,2.35-1.58,2.35-3.05,0-1.69-1.36-3.07-3.04-3.07"/>
+    </svg>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard!</div>
+
+<script>
+var LOGOS={xero:'xero.com',myob:'myob.com',elmo:'elmosoftware.com.au',humanforce:'humanforce.com',tanda:'tanda.co',deputy:'deputy.com',definitiv:'definitiv.com.au',microkeeper:'microkeeper.com.au',adp:'adp.com',rockfast:'rockfast.com.au',brighthr:'brighthr.com',enablehr:'enablehr.com.au',kakitangan:'kakitangan.com',justlogin:'justlogin.com',payrollpanda:'payrollpanda.my',infotech:'infotech.com.my',quickhr:'quickhr.co',millionpayroll:'million.com.my',talenox:'talenox.com',whyze:'whyze.com.sg',rippling:'rippling.com',hibob:'hibob.com',bamboohr:'bamboohr.com',sage:'sage.com',chris21:'chris21.com',darwinbox:'darwinbox.com'};
+
+var COMPETITORS=[
+  {id:'xero',name:'Xero Payroll',region:'anz',initials:'XE',meter:[1,1,1,0,0],
+   wins:['120+ automated Modern Award interpretations — unmatched depth and breadth','Native Payday Super via HeroClear — Australia\'s first payroll-embedded super clearing on the NPP with Zepto & OZEDI','Integrated STP Phase 2 filing built in from day one','Full employee lifecycle from digital contract to pay slip in one platform'],
+   watchouts:['Unified ledger with Xero accounting eliminates data-transfer friction — natural default for Xero practices','Zero data-sync latency for firms already on Xero accounting','Default choice for small accounting firms and bookkeepers across Australia']},
+  {id:'myob',name:'MYOB Payroll',region:'anz',initials:'MY',meter:[1,1,1,0,0],
+   wins:['Pure cloud-native architecture with no legacy on-premises baggage','Superior mobile onboarding and employee self-service experience','Integrated EH Work app with Earned Wage Access (formerly InstaPay) and retailer discounts lifts the payday experience','Native Payday Super automation via HeroClear prevents late-payment penalties'],
+   watchouts:['Strong legacy brand loyalty and deep bookkeeper relationships — "sticky" to traditional bookkeepers','Deep project-based costing in MYOB Advanced for construction and professional services','"Sticky" relationships with traditional bookkeepers are difficult to displace']},
+  {id:'elmo',name:'ELMO Software',region:'anz',initials:'EL',meter:[1,1,1,1,0],
+   wins:['Faster, mobile-first UX vs ELMO\'s more desktop-centric interface','Native Payday Super automation via HeroClear — embedded clearing, real-time validation, and settlement tracking in one workflow','Single platform covering the full employee lifecycle: hire, onboard, pay, offboard'],
+   watchouts:['Stronger enterprise-grade governance and audit trail features for larger organisations','Modular contract flexibility suits organisations building bespoke HR/Payroll tech stacks','Well-established mid-market ANZ brand with a dedicated local support team']},
+  {id:'humanforce',name:'Humanforce',region:'anz',initials:'HF',meter:[1,1,0,0,0],
+   wins:['Faster implementation — weeks vs months for complex WFM deployments','More intuitive UI for standard office and retail staff','Integrated HR data eliminates manual re-keying between rostering and pay runs'],
+   watchouts:['AI-powered fatigue monitoring for safety-critical industries (mining, healthcare)','Complex skills-based rostering for large shift-based workforces','Single-database architecture — no HR-to-payroll sync required within their platform']},
+  {id:'tanda',name:'Tanda',region:'anz',initials:'TA',meter:[1,1,1,0,0],
+   wins:['Native HR/Payroll integration as a single source of truth — no export/import loops','Automated Payday Super clearing via HeroClear','Full employee lifecycle management from digital contract to pay slip'],
+   watchouts:['Exceptionally robust time-and-attendance features: GPS tracking, SMS shift notifications, complex break rules','High customisability for shift-based and hospitality businesses','Strong integrations with industry-specific POS systems']},
+  {id:'deputy',name:'Deputy',region:'anz',initials:'DP',meter:[1,1,1,0,0],
+   wins:['Native integrated payroll and Modern Award interpretation — one system of record','No data-sync errors between roster and pay run','HeroClear automates Payday Super clearing from within payroll'],
+   watchouts:['Best-of-breed scheduling UI widely regarded as the market leader for rostering','Frictionless freemium-to-paid conversion model for small hospitality businesses','Deep integrations with POS systems and job management platforms']},
+  {id:'definitiv',name:'Definitiv',region:'anz',initials:'DV',meter:[1,1,0,0,0],
+   wins:['Standard Award templates are more cost-effective for typical SME requirements','Faster setup and onboarding for businesses without complex Enterprise Agreements','Modern, intuitive cloud UI vs Definitiv\'s more technical configuration experience'],
+   watchouts:['Date-driven payroll logic handles back-pays and complex agreement changes natively','Extreme flexibility for custom Enterprise Bargaining Agreements (EBAs) across multiple industries','Proven track record in complex public sector and large enterprise payroll']},
+  {id:'microkeeper',name:'Microkeeper',region:'anz',initials:'MK',meter:[1,1,1,0,0],
+   wins:['Superior employee value proposition: EH Work app with Earned Wage Access, cashback discounts, and career tools','Modern, consumer-grade UX vs Microkeeper\'s utilitarian, operations-focused interface','Full HR suite alongside payroll and time-and-attendance'],
+   watchouts:['Hardware specialists: physical biometric kiosks (fingerprint and facial recognition) for harsh industrial environments','Strong fit for manufacturing, warehousing, and outdoor worksites where mobile phones are impractical']},
+  {id:'adp',name:'ADP Payroll',region:'anz',initials:'AD',meter:[1,1,0,0,0],
+   wins:['Agile, responsive local support vs ADP\'s ticket-based service model','Transparent, predictable pricing with no hidden module costs','Modern paperless digital onboarding vs ADP\'s historically manual processes'],
+   watchouts:['Managed Payroll (PEO) services for large multinationals seeking to fully outsource payroll','Decades of global enterprise credibility and compliance infrastructure','Scale for highly complex, multi-jurisdiction payroll requirements']},
+  {id:'rockfast',name:'Rockfast',region:'anz',initials:'RF',meter:[1,1,1,0,0],
+   wins:['Mobile-first cloud pay runs vs Rockfast\'s legacy Windows desktop client','Intuitive manager approval workflows with real-time visibility','Full cloud HR suite alongside payroll'],
+   watchouts:['Can handle the complexity ceiling of 5,000+ employee payrolls','Specialised Fringe Benefits Tax (FBT) and expatriate payroll tracking capabilities','Established relationships in large government and utilities sectors']},
+  {id:'brighthr',name:'BrightHR',region:'anz',initials:'BR',meter:[1,1,1,0,0],
+   wins:['Full Payroll and Modern Award interpretation built in — no manual compliance work','Built specifically for Australian Fair Work requirements end-to-end','Complete HR lifecycle: hire, onboard, manage, and pay in one platform'],
+   watchouts:['Niche Health & Safety and incident management apps tailored for construction and trades','Lower entry price point for micro-businesses needing basic HR-only features','UK-origin brand with strong name recognition in specific verticals']},
+  {id:'enablehr',name:'Enable HR',region:'anz',initials:'EN',meter:[1,1,1,0,0],
+   wins:['Integrated Payroll and Modern Award interpretation as a native capability','LMS and employee engagement tools built into the core platform','Superior mobile app and employee self-service experience'],
+   watchouts:['Specialised WHS and workplace safety compliance focus','Robust volunteer and contractor management modules','Strong fit for not-for-profit and community organisations']},
+  {id:'kakitangan',name:'Kakitangan (MY)',region:'sea',initials:'KK',meter:[1,0,0,0,0],
+   wins:['Integrated HR-to-pay workflow in a single platform','Native EPF, SOCSO, and EIS automation without manual workarounds','Streamlined multi-branch retail management with centralised reporting'],
+   watchouts:['Malaysian market leader with the highest local brand recognition','Kuala Lumpur-based office provides in-person, localised support','SME Grant subsidised pricing makes it extremely cost-competitive']},
+  {id:'justlogin',name:'JustLogin (SG)',region:'sea',initials:'JL',meter:[1,1,0,0,0],
+   wins:['2026 CPF salary ceiling changes automated within payroll — no manual adjustment required','No "module traps" — time-and-attendance included without separate licensing','Superior mobile self-service app experience for employees'],
+   watchouts:['Deep Singapore bank integrations including FAST payment rails','PSG Grant approved, reducing net cost significantly for eligible Singapore SMEs','Physical thermal biometric kiosks for retail and F&B environments']},
+  {id:'payrollpanda',name:'Payroll Panda (MY)',region:'sea',initials:'PP',meter:[1,1,1,0,0],
+   wins:['Native time-and-attendance — no dependency on Jibble or third-party exports','Full HR engine vs a payroll-only generator: policies, contracts, leave management','Broader employee lifecycle management beyond payroll processing'],
+   watchouts:['Aggressive pricing for micro-startups on tight budgets','Highly-rated live chat support specifically tailored for first-time payroll filers','Extremely simple onboarding designed for non-HR founders']},
+  {id:'infotech',name:'Infotech',region:'sea',initials:'IT',meter:[1,1,0,0,0],
+   wins:['Modern, cloud-native UI vs Infotech\'s older interface','Employee wellness via the EH Work app (Earned Wage Access, retailer discounts)','360-degree performance reviews integrated with compensation workflows'],
+   watchouts:['Multi-language support (Bahasa Malaysia and Chinese) for diverse Malaysian workforces','Biometric hardware integrations for physical site attendance','Strong PSG Grant backing in Singapore reduces client acquisition friction']},
+  {id:'quickhr',name:'QuickHR (SG)',region:'sea',initials:'QH',meter:[1,1,1,0,0],
+   wins:['Integrated digital onboarding-to-pay in a single workflow','Cleaner, more modern UI with lower training overhead','Transparent bundled pricing with no hidden module costs'],
+   watchouts:['Specialised GPS geo-fencing and thermal biometrics for local Singapore retail and F&B','PSG Grant approved — net cost significantly reduced for eligible businesses','Strong local Singapore brand recognition']},
+  {id:'millionpayroll',name:'Million Payroll (SG)',region:'sea',initials:'MP',meter:[1,1,1,0,0],
+   wins:['True cloud-native architecture vs Million\'s legacy accounting-add-on heritage','Integrated HR suite: digital contracts, policy management, employee records','Modern employee self-service and mobile accessibility'],
+   watchouts:['IRAS-approved software with long-standing Singapore tax authority credibility','Biometric thumbprint synchronisation for on-site physical security environments']},
+  {id:'talenox',name:'Talenox',region:'sea',initials:'TX',meter:[1,1,1,0,0],
+   wins:['Full HR suite including Performance Management and Learning tools','Greater support scale and platform maturity for growing businesses','More robust compliance automation for multi-country SEA payroll'],
+   watchouts:['Free-for-life tier for micro-SMEs (below a set employee threshold)','Simple multi-country payroll dashboard appealing to early-stage startups','Low-friction entry point with no implementation overhead']},
+  {id:'whyze',name:'Whyze (SG)',region:'sea',initials:'WZ',meter:[1,1,1,0,0],
+   wins:['Modern, consumer-grade UI vs Whyze\'s more utilitarian interface','Native rostering and shift-scheduling integrated within the same platform','Employee engagement surveys and recognition tools built in'],
+   watchouts:['Biometric hardware integrations for on-site attendance verification','Positioned as a straightforward, budget-friendly payroll-only solution','Lower price point for businesses that do not need a full HR suite']},
+  {id:'rippling',name:'Rippling',region:'global',initials:'RP',meter:[1,1,1,0,0],
+   wins:['Deep AU/NZ/SEA localisation: Modern Award engine, local tax tables, Fair Work compliance','Local data residency: Australian data stored in Australia','Specialist knowledge of ANZ industrial relations complexity'],
+   watchouts:['Unified IT/HR/Finance platform: laptop shipping, MDM, and device management alongside people management','Automated global trigger tasks across 10+ countries in a single workflow','Strong US enterprise credibility for multinationals expanding globally']},
+  {id:'hibob',name:'HiBob',region:'global',initials:'HB',meter:[1,1,1,0,0],
+   wins:['Compliance-first architecture: local bank, tax, and super handled natively — Bob often requires manual exports for ANZ compliance','Native Payday Super preparation via HeroClear','Stronger ANZ localisation for Fair Work obligations'],
+   watchouts:['Social, Instagram-style UI drives very high employee engagement scores','Massive integration marketplace: Slack, Teams, Culture Amp, and 100+ others','Particularly strong for fast-growing, culture-focused tech businesses']},
+  {id:'bamboohr',name:'BambooHR',region:'global',initials:'BH',meter:[1,1,1,0,0],
+   wins:['Native localised payroll engine — bank, tax, and super data managed within one system','Single source of truth: no data export required between HR and payroll','Localised VEVO and ATO integrations for Australian compliance'],
+   watchouts:['Open API with 100+ integrations and a large developer ecosystem','Excellent ATS and hiring workflows for businesses with high recruitment volume','Massive global user community and wealth of self-service resources']},
+  {id:'sage',name:'Sage (WageEasy)',region:'global',initials:'SG',meter:[1,1,1,0,0],
+   wins:['Cloud-native architecture with no on-premises maintenance overhead','Integrated HRIS removes the need for separate HR and payroll systems','Better employee experience via the EH Work mobile app'],
+   watchouts:['Fits within the broader Sage ERP ecosystem for businesses already on Sage','Advanced enterprise reporting for complex cost-centre structures','Strong relationships in not-for-profit and education sectors']},
+  {id:'chris21',name:'Chris21',region:'global',initials:'C2',meter:[1,1,1,0,0],
+   wins:['Fully cloud-native vs Chris21\'s on-premises heritage and associated infrastructure costs','Modern, consumer-grade UI with significantly lower training overhead','Faster implementation timeline for large employee groups'],
+   watchouts:['Highly customisable for complex banking, health, and government sector requirements','Sophisticated position management and organisational hierarchy features','Deep integration with existing government and enterprise ERP systems']},
+  {id:'darwinbox',name:'Darwin Box',region:'global',initials:'DB',meter:[1,1,1,0,0],
+   wins:['Transparent, predictable pricing without complex enterprise licensing negotiations','SMB-friendly UI with faster time-to-value for mid-market businesses','Faster implementation vs Darwin Box\'s typically MNC-focused deployment methodology'],
+   watchouts:['Comprehensive Travel and Expense claims management integrated within the platform','Rewards and recognition modules localised for various Asian markets','Strong positioning for large enterprises across India and South-East Asia']}
+];
+
+/* ── BUILD CARD ── */
+function buildCard(c){
+  var rc=c.region==='global'?'glob':c.region;
+  var avCls='avatar avatar-'+rc;
+  var tagCls='region-tag tag-'+rc;
+  var tagLbl=c.region==='anz'?'ANZ':c.region==='sea'?'SEA':'Global';
+  var wins='',watches='',dots='';
+  for(var i=0;i<c.wins.length;i++) wins+='<li><span class="point-dot"></span>'+c.wins[i]+'</li>';
+  for(var j=0;j<c.watchouts.length;j++) watches+='<li><span class="point-dot"></span>'+c.watchouts[j]+'</li>';
+  for(var k=0;k<c.meter.length;k++) dots+='<div class="meter-dot'+(c.meter[k]?' win':'')+'"></div>';
+  var domain=LOGOS[c.id]||'';
+  var logoUrl=domain?'https://logo.clearbit.com/'+domain:'';
+  var avId='av-'+c.id;
+  var avInner=logoUrl
+    ?'<img class="logo-img" src="'+logoUrl+'" alt="'+c.name+'" onerror="var a=document.getElementById(\''+avId+'\');a.classList.add(\'no-logo\')">'
+     +'<span class="logo-fallback">'+c.initials+'</span>'
+    :'<span class="logo-fallback" style="display:flex">'+c.initials+'</span>';
+  var icoCheck='<svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+  var icoInfo='<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+  var icoCopy='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  return '<div class="card" data-region="'+c.region+'" data-name="'+c.name.toLowerCase()+'" data-id="'+c.id+'">'
+    +'<div class="card-top">'
+      +'<div class="'+avCls+'" id="'+avId+'">'+avInner+'</div>'
+      +'<div>'
+        +'<div class="card-name">'+c.name+'</div>'
+        +'<div class="card-tags"><span class="'+tagCls+'">'+tagLbl+'</span></div>'
+      +'</div>'
+    +'</div>'
+    +'<div class="card-body">'
+      +'<div class="section section-win">'
+        +'<div class="section-label">'+icoCheck+' Why We Win</div>'
+        +'<ul class="points">'+wins+'</ul>'
+      +'</div>'
+      +'<div class="section section-watch">'
+        +'<div class="section-label">'+icoInfo+' Know Your Objections</div>'
+        +'<ul class="points">'+watches+'</ul>'
+      +'</div>'
+    +'</div>'
+    +'<div class="card-foot">'
+      +'<button class="copy-btn" onclick="copyCard(this,\''+c.id+'\')">'+icoCopy+' Copy Talking Points</button>'
+      +'<div class="strength-meter">'+dots+'</div>'
+    +'</div>'
+  +'</div>';
+}
+
+function render(){
+  var h={anz:'',sea:'',global:''};
+  for(var i=0;i<COMPETITORS.length;i++){var c=COMPETITORS[i];if(h[c.region]!==undefined)h[c.region]+=buildCard(c);}
+  document.getElementById('grid-anz').innerHTML=h.anz;
+  document.getElementById('grid-sea').innerHTML=h.sea;
+  document.getElementById('grid-global').innerHTML=h.global;
+}
+
+/* ── FILTER ── */
+var activeRegion='all';
+function applyFilters(){
+  var q=document.getElementById('search').value.toLowerCase().trim();
+  var shown=0;
+  var cards=document.querySelectorAll('.card');
+  for(var i=0;i<cards.length;i++){
+    var card=cards[i];
+    var regionOk=(activeRegion==='all'||card.getAttribute('data-region')===activeRegion);
+    var text=card.textContent.toLowerCase();
+    var searchOk=(!q||card.getAttribute('data-name').indexOf(q)!==-1||new RegExp('\\b'+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i').test(text));
+    card.style.display=(regionOk&&searchOk)?'':'none';
+    if(regionOk&&searchOk)shown++;
+  }
+  var regions=['anz','sea','global'];
+  for(var r=0;r<regions.length;r++){
+    var sec=document.getElementById('section-'+regions[r]);
+    if(sec)sec.style.display=(activeRegion==='all'||activeRegion===regions[r])?'':'none';
+  }
+  document.getElementById('shown-count').textContent=shown;
+  document.getElementById('empty-state').style.display=shown===0?'block':'none';
+}
+
+/* ── TABS (top strip) ── */
+document.getElementById('tabs').addEventListener('click',function(e){
+  var btn=e.target.closest('.tab-btn');
+  if(!btn)return;
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  activeRegion=btn.getAttribute('data-region');
+  applyFilters();
+});
+
+
+document.getElementById('search').addEventListener('input',applyFilters);
+
+/* ── COPY ── */
+function copyCard(btn,id){
+  var c=null;
+  for(var i=0;i<COMPETITORS.length;i++){if(COMPETITORS[i].id===id){c=COMPETITORS[i];break;}}
+  if(!c)return;
+  var lines=['EMPLOYMENT HERO vs '+c.name.toUpperCase(),'Updated: May 2026 | For Intuit tele-sales use only','','WHY WE WIN'];
+  for(var w=0;w<c.wins.length;w++)lines.push('  * '+c.wins[w]);
+  lines.push('','KNOW YOUR OBJECTIONS');
+  for(var o=0;o<c.watchouts.length;o++)lines.push('  * '+c.watchouts[o]);
+  lines.push('','----------------------------------------------','EH Payroll Battlecards 2026 | Confidential');
+  navigator.clipboard.writeText(lines.join('\n')).then(function(){
+    var icoTick='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';
+    var icoCopy='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    btn.classList.add('copied');
+    btn.innerHTML=icoTick+' Copied!';
+    var t=document.getElementById('toast');
+    t.classList.add('visible');
+    setTimeout(function(){t.classList.remove('visible');},2000);
+    setTimeout(function(){btn.classList.remove('copied');btn.innerHTML=icoCopy+' Copy Talking Points';},2200);
+  });
+}
+
+render();
+applyFilters();
+</script>
+</body>
+</html>
